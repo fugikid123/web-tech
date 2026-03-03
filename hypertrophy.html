@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Core principles of hypertrophy training: Progressive Overload, Full Range of Motion, and Control.">
+    <title>Hypertrophy Principles</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #475569;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        nav {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            max-width: 1000px;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 2rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Training</a></li>
+            <li><a href="#">Nutrition</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Foundations of Muscle Growth</h1>
+        <p>Master these three pillars to maximize your hypertrophy potential.</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>1. Progressive Overload</h2>
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80" alt="Dumbbells on a rack representing increasing weight" style="width:100%; height:200px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+            <p>The gradual increase of stress placed upon the body during exercise. This can be achieved by increasing weight, repetitions, sets, or decreasing rest time.</p>
+            <p><strong>Goal:</strong> Force the body to adapt to increasing demands over time.</p>
+        </section>
+
+        <section class="card">
+            <h2>2. Full Range of Motion (ROM)</h2>
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80" alt="Person performing a deep squat showing full range of motion" style="width:100%; height:200px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+            <p>Performing an exercise through the entire movement potential of a joint. Research shows that training at longer muscle lengths is superior for hypertrophy.</p>
+            <p><strong>Goal:</strong> Maximize muscle fiber recruitment and mechanical tension.</p>
+        </section>
+
+        <section class="card">
+            <h2>3. Controlling the Movement</h2>
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&q=80" alt="Close up of a bicep curl focusing on controlled contraction" style="width:100%; height:200px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+            <p>Focusing on the eccentric (lowering) phase and avoiding the use of momentum. A controlled tempo increases "Time Under Tension" (TUT) and ensures the target muscle is doing the work.</p>
+            <p><strong>Goal:</strong> Minimize injury risk and optimize stimulus-to-fatigue ratio.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Hypertrophy Lab. Built for Web Tech Lab 1.</p>
+    </footer>
+
+</body>
+</html>
