@@ -5,27 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hypertrophy Principles - HTML only</title>
-    <style>
-        /* Minimal CSS to fix touch targets and spacing for accessibility */
-        button, input, select, textarea, a {
-            min-height: 44px; /* Minimum touch target size */
-            min-width: 44px;
-            margin: 10px 0;
-            display: inline-block;
-        }
-        nav a {
-            padding: 10px 15px;
-            margin: 0 5px;
-        }
-        form p {
-            margin-bottom: 20px;
-        }
-        input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-        }
-    </style>
 </head>
 <body>
 
@@ -34,11 +13,11 @@
         <p>Master these three pillars to maximize your hypertrophy potential.</p>
         <hr>
         <nav aria-label="Main Navigation">
-            <p>
-                <a href="index.html">Home</a>
-                <a href="#principles">Principles</a>
-                <a href="#join">Join Now</a>
-            </p>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#principles">Principles</a></li>
+                <li><a href="#join">Join Now</a></li>
+            </ul>
         </nav>
         <hr>
     </header>
@@ -75,41 +54,62 @@
             <p>Sign up to receive our hypertrophy training guide.</p>
             
             <form action="#" method="POST">
-                <p>
-                    <label for="name">Full Name:</label><br>
-                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                </p>
+                <div>
+                    <p>
+                        <label for="name">Full Name:</label><br>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name" size="40">
+                    </p>
+                </div>
                 
-                <p>
-                    <label for="email">Email Address:</label><br>
-                    <input type="email" id="email" name="email" required placeholder="example@email.com">
-                </p>
+                <div>
+                    <p>
+                        <label for="email">Email Address:</label><br>
+                        <input type="email" id="email" name="email" required placeholder="example@email.com" size="40">
+                    </p>
+                </div>
                 
-                <p>
-                    <label for="level">Experience Level:</label><br>
-                    <select id="level" name="level">
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                    </select>
-                </p>
+                <div>
+                    <p>
+                        <label for="level">Experience Level:</label><br>
+                        <select id="level" name="level">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </p>
+                </div>
 
-                <p>
-                    <label>Preferred Training Days:</label><br>
-                    <input type="checkbox" id="mon" name="days" value="mon"> <label for="mon">Monday</label><br>
-                    <input type="checkbox" id="wed" name="days" value="wed"> <label for="wed">Wednesday</label><br>
-                    <input type="checkbox" id="fri" name="days" value="fri"> <label for="fri">Friday</label>
-                </p>
+                <fieldset>
+                    <legend>Preferred Training Days</legend>
+                    <p>
+                        <input type="checkbox" id="mon" name="days" value="mon">
+                        <label for="mon">Monday</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="wed" name="days" value="wed">
+                        <label for="wed">Wednesday</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="fri" name="days" value="fri">
+                        <label for="fri">Friday</label>
+                    </p>
+                </fieldset>
 
-                <p>
-                    <label for="comments">Additional Goals:</label><br>
-                    <textarea id="comments" name="comments" rows="4" cols="30" placeholder="Tell us about your goals"></textarea>
-                </p>
+                <div>
+                    <p>
+                        <label for="comments">Additional Goals:</label><br>
+                        <textarea id="comments" name="comments" rows="6" cols="40" placeholder="Tell us about your goals"></textarea>
+                    </p>
+                </div>
 
-                <p>
-                    <button type="submit" aria-label="Submit Information Form">Submit Information</button>
-                    <button type="reset" aria-label="Reset Form Fields">Clear Form</button>
-                </p>
+                <div>
+                    <p>
+                        <button type="submit" aria-label="Submit Information Form">Submit Information</button>
+                    </p>
+                    <p>
+                        <button type="reset" aria-label="Reset Form Fields">Clear Form</button>
+                    </p>
+                </div>
             </form>
         </section>
     </main>
