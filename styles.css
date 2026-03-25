@@ -178,11 +178,45 @@ input, select, textarea {
   border-radius: 8px;
   color: white;
   box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input:focus, textarea:focus {
   outline: none;
   border-color: var(--accent-red);
+}
+
+input.valid {
+  border-color: #10b981 !important; /* Emerald-500 */
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+input.invalid {
+  border-color: var(--accent-red) !important;
+  box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.2);
+}
+
+.error-message {
+  color: var(--accent-red);
+  font-size: 0.75rem;
+  margin-top: 0.4rem;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+input.invalid + .error-message {
+  opacity: 1;
+}
+
+input.valid + .error-message {
+  opacity: 0;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
 }
 
 fieldset {
@@ -200,7 +234,111 @@ button {
   transition: opacity 0.2s;
 }
 
-.btn-primary { background: var(--accent-red); color: white; }
+/* --- Expanding Project Grid --- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--card-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  overflow: hidden;
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.project-card:focus {
+  outline: none;
+}
+
+.project-card:focus-visible {
+  box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.35);
+}
+
+.project-header {
+  padding-bottom: 0.75rem;
+}
+
+.project-short {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  transition: color 0.25s ease;
+}
+
+.project-details {
+  overflow: hidden;
+  max-height: 0; /* collapsed by default */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: max-height 0.45s ease, opacity 0.25s ease, transform 0.35s ease;
+}
+
+.project-details .description {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.project-card:hover,
+.project-card:focus,
+.project-card:focus-within {
+  border-color: var(--accent-red);
+  background: rgba(225, 29, 72, 0.02);
+}
+
+.project-card:hover .project-short,
+.project-card:focus .project-short,
+.project-card:focus-within .project-short {
+  color: var(--accent-red);
+}
+
+.project-card:hover .project-details,
+.project-card:focus .project-details,
+.project-card:focus-within .project-details {
+  max-height: 260px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.project-items li {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.task-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  color: var(--text-main);
+  text-decoration: none;
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.18);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.task-link:hover {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  background: rgba(225, 29, 72, 0.07);
+}
 .btn-secondary { background: #333; color: white; margin-left: 0.5rem; }
 
 /* --- Footer --- */
@@ -246,6 +384,7 @@ footer {
   .nav-toggle:checked + .nav-toggle-label span::after { transform: rotate(-45deg); top: 0; }
 
   .grid-4, .grid-auto { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
   
   .hero h1 { font-size: 2rem; }
 }

@@ -61,25 +61,119 @@
 
     <section id="projects">
       <h2>Projects</h2>
-      <a href="hypertrophy(HTML).html" style="text-decoration: none; color: inherit;">
-        <div class="card">
-          <strong>Hypertrophy Principles Webpage</strong><br>
-          A responsive landing page focused on muscle growth principles, featuring a custom CSS grid and mobile navigation.
+      <div class="card" style="border: none; background: transparent; padding: 0;">
+        <p style="margin-bottom: 2rem;">Explore my portfolio. Hover over each card to reveal details and links.</p>
+        
+        <div class="projects-grid">
+          <!-- Web Tech Card (Merged Task 1 & 2) -->
+          <article class="project-card" tabindex="0">
+            <div class="project-header">
+              <h3 class="project-short">Web Technologies</h3>
+            </div>
+
+            <div class="project-details">
+              <p class="description">A collection of laboratory tasks focusing on ES6+, DOM APIs, and responsive design.</p>
+              <ul class="project-items">
+                <li><a href="hypertrophy(HTML).html" class="task-link">Task 1: Hypertrophy</a></li>
+                <li><a href="tasks.html" class="task-link">Task 2: JS Lab</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- BookStock Card -->
+          <article class="project-card" tabindex="0">
+            <div class="project-header">
+              <h3 class="project-short">BookStock</h3>
+            </div>
+
+            <div class="project-details">
+              <p class="description">A Java-based inventory management application for tracking book supplies and stock levels.</p>
+              <ul class="project-items">
+                <li>Inventory management</li>
+                <li>Stock level tracking</li>
+                <li>CRUD operations</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Student Database Card -->
+          <article class="project-card" tabindex="0">
+            <div class="project-header">
+              <h3 class="project-short">Student Database</h3>
+            </div>
+
+            <div class="project-details">
+              <p class="description">A comprehensive relational database designed for managing university housing and student records.</p>
+              <ul class="project-items">
+                <li>Relational schema design</li>
+                <li>Student record management</li>
+                <li>Housing & assignments</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- UI-UX Card -->
+          <article class="project-card" tabindex="0">
+            <div class="project-header">
+              <h3 class="project-short">UI-UX Design</h3>
+            </div>
+
+            <div class="project-details">
+              <p class="description">Prototype designs focused on user-centric interfaces, accessibility, and seamless navigation.</p>
+              <ul class="project-items">
+                <li>Wireframes & prototypes</li>
+                <li>Accessibility considerations</li>
+                <li>UX flow improvements</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Social Data Card -->
+          <article class="project-card" tabindex="0">
+            <div class="project-header">
+              <h3 class="project-short">Social Data</h3>
+            </div>
+
+            <div class="project-details">
+              <p class="description">A system built to analyze and visualize data patterns from social platforms using Python.</p>
+              <ul class="project-items">
+                <li>Data analysis with Python</li>
+                <li>Visualization & reporting</li>
+                <li>Pattern discovery</li>
+              </ul>
+            </div>
+          </article>
         </div>
-      </a>
-      <div class="card">
-        <strong>BookStock System</strong><br>
-        Java-based inventory management application.
-      </div>
-      <div class="card">
-        <strong>Student Accommodation Database</strong><br>
-        Relational database design and implementation.
       </div>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
       <div class="card">
+        <form action="#" method="POST">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your Name">
+            <span class="error-message">This field is mandatory. (e.g. John Doe)</span>
+          </div>
+          <div class="input-group">
+            <label for="age">Age (Optional)</label>
+            <input type="number" id="age" name="age" min="1" max="120" placeholder="e.g. 25">
+            <span class="error-message">Please enter a valid age (1-120)</span>
+          </div>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+            <span class="error-message">This field is mandatory. (e.g. hello@domain.com)</span>
+          </div>
+          <div class="input-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="How can I help you?"></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+      </div>
+      <div class="card" style="margin-top: 1rem;">
         Email: your@email.com<br>
         Location: Sydney, Australia
       </div>
@@ -89,6 +183,8 @@
   <footer>
     © 2026 Professional Portfolio. Synchronized Dark & Red Theme.
   </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>

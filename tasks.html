@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Tasks - Task Manager & Validation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific styles for the Task Manager */
+        #task-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #111;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+        .task-item.completed span {
+            text-decoration: line-through;
+            color: var(--text-dim);
+        }
+        .task-text {
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        .delete-btn {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .delete-btn:hover { background: #be123c; }
+
+        /* Styles for Task 2 UI */
+        #dynamic-bg-box {
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.5s ease;
+        }
+        .char-counter-container {
+            margin-top: 1rem;
+            text-align: left;
+        }
+        #char-count {
+            font-weight: bold;
+            color: var(--accent-red);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-brand"><b>JS Tasks.</b></div>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hypertrophy(HTML).html">Task 1 (Web)</a></li>
+            <li><a href="#task-manager">Task Manager</a></li>
+            <li><a href="#dynamic-form">Form Validation</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Task 1: Mini Task Manager -->
+        <section id="task-manager">
+            <h2>Task 1: Mini Task Manager</h2>
+            <div class="card">
+                <div class="input-group" style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="task-input" placeholder="Enter a new task..." style="flex-grow: 1;">
+                    <button id="add-task-btn" class="btn-primary">Add Task</button>
+                </div>
+                <ul id="task-list">
+                    <!-- Tasks will appear here -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Task 2: Dynamic UI & Form -->
+        <section id="dynamic-form">
+            <h2>Task 2: Dynamic UI & Form Validation</h2>
+            
+            <!-- Part 1: Dynamic UI -->
+            <div class="card">
+                <h3>Dynamic UI Controls</h3>
+                <div id="dynamic-bg-box">
+                    <p>Change my background color!</p>
+                    <button id="bg-change-btn" class="btn-secondary">Switch Color</button>
+                </div>
+
+                <div class="char-counter-container">
+                    <label for="char-input">Live Character Counter:</label>
+                    <textarea id="char-input" rows="3" placeholder="Start typing..."></textarea>
+                    <p>Character Count: <span id="char-count">0</span></p>
+                </div>
+            </div>
+
+            <!-- Part 2: Form Validation -->
+            <div class="card">
+                <h3>Registration Form</h3>
+                <form id="registration-form" novalidate>
+                    <div class="input-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" required>
+                        <span class="error-message">First name is required.</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" required>
+                        <span class="error-message">Last name is required.</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" minlength="8" required>
+                        <span class="error-message">Must be at least 8 characters.</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                        <span class="error-message">Please enter a valid email format.</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                        <span class="error-message">Min 8 chars, 1 number, 1 special character.</span>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%;">Register</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 JS Laboratory. ES6+ & DOM API Implementation.
+    </footer>
+
+    <script src="tasks-script.js"></script>
+</body>
+</html>

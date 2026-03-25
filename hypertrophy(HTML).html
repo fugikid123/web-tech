@@ -63,15 +63,24 @@
             <h2>Training Guide Signup</h2>
             <div class="card">
                 <form action="#" method="POST">
-                    <div>
+                    <div class="input-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required placeholder="Enter your name">
+                        <span class="error-message">This field is mandatory. (e.g. Minh Tran)</span>
                     </div>
-                    
-                    <div>
+
+                    <div class="input-group">
+                        <label for="age">Age (Optional)</label>
+                        <input type="number" id="age" name="age" min="1" max="120" placeholder="e.g. 25">
+                        <span class="error-message">Enter a valid age (1-120) if providing.</span>
+                    </div>
+
+                    <div class="input-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" required placeholder="example@email.com">
+                        <span class="error-message">This field is mandatory. (e.g. user@domain.com)</span>
                     </div>
+
                     
                     <div>
                         <label for="level">Experience Level</label>
@@ -103,6 +112,8 @@
     <footer>
         <p>&copy; 2026 Hypertrophy Lab. Synchronized Dark & Red Theme.</p>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
