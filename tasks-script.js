@@ -91,69 +91,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // TASK 2: FORM VALIDATION
     // ==========================================
     const form = document.querySelector('#registration-form');
-    const inputs = form.querySelectorAll('input');
 
-    const validateInput = (input) => {
-        let isValid = true;
-        const value = input.value.trim();
-        const type = input.id;
+    if (form) {
+        const inputs = [...form.querySelectorAll('input')];
+        let isSubmitted = false;
 
-        // Validation Rules
-        if (value === "") {
-            isValid = false;
-        } else {
-            switch(type) {
-                case 'username':
-                    isValid = value.length >= 8;
-                    break;
-                case 'email':
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    isValid = emailRegex.test(value);
-                    break;
-                case 'password':
-                    // Min 8 chars, 1 number, 1 special char
-                    const passRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-                    isValid = passRegex.test(value);
-                    break;
+        const validators = {
+            firstName: value => value.length > 0,
+            lastName: value => value.length > 0,
+            username: value => value.length >= 8,
+            email: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+            // Min 8 chars, at least 1 number and 1 special character
+            password: value => /^(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/.test(value)
+        };
+
+        const validateInput = (input, forceShow = false) => {
+            const value = input.value.trim();
+            const validator = validators[input.id];
+            const isValid = validator ? validator(value) : value.length > 0;
+
+            if (isValid) {
+                input.classList.remove('invalid');
+                input.classList.add('valid');
+            } else if (forceShow) {
+                input.classList.remove('valid');
+                input.classList.add('invalid');
+            } else {
+                // Keep field neutral until first blur/submit
+                input.classList.remove('valid', 'invalid');
             }
-        }
 
-        // Apply Styles
-        if (isValid) {
-            input.classList.add('valid');
-            input.classList.remove('invalid');
-        } else {
-            input.classList.add('invalid');
-            input.classList.remove('valid');
-        }
+            return isValid;
+        };
 
-        return isValid;
-    };
-
-    // Live Validation on input/blur
-    inputs.forEach(input => {
-        input.addEventListener('input', () => validateInput(input));
-        input.addEventListener('blur', () => validateInput(input));
-    });
-
-    // Form Submit Handling
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let isFormValid = true;
-
+        // Live validation: if a field was invalid, typing fixes it immediately
         inputs.forEach(input => {
-            if (!validateInput(input)) {
-                isFormValid = false;
-            }
+            input.addEventListener('input', () => {
+                const shouldShow = isSubmitted || input.classList.contains('invalid');
+                validateInput(input, shouldShow);
+            });
+
+            input.addEventListener('blur', () => {
+                validateInput(input, true);
+            });
         });
 
-        if (isFormValid) {
-            alert('Registration Successful!');
-            form.reset();
-            inputs.forEach(i => i.classList.remove('valid', 'invalid'));
-        } else {
-            alert('Please fix the errors in the form.');
-        }
-    });
+        // Form submit handling
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            isSubmitted = true;
+
+            const isFormValid = inputs.every(input => validateInput(input, true));
+
+            if (isFormValid) {
+                alert('Registration Successful!');
+                form.reset();
+                isSubmitted = false;
+                inputs.forEach(input => input.classList.remove('valid', 'invalid'));
+            } else {
+                alert('Please fix the errors in the form.');
+            }
+        });
+    }
 
 });
