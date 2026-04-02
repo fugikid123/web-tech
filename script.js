@@ -67,20 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderExercises = (exercises) => {
-        if (exercises.length === 0) {
+        if (!exercises || exercises.length === 0) {
             exerciseResults.innerHTML = '<p style="grid-column:1/-1; text-align:center;">No exercises found for this muscle group.</p>';
             return;
         }
 
-        exerciseResults.innerHTML = exercises.map(ex => `
+        exerciseResults.innerHTML = exercises.map((ex, index) => `
             <div class="card" style="margin:0; display:flex; flex-direction:column; gap:0.5rem;">
-                <h3 style="color:var(--accent-white); border:none; padding:0; font-size:1.1rem;">${ex.name}</h3>
+                <h3 style="color:var(--accent-white); border:none; padding:0; font-size:1.1rem; text-transform:capitalize;">${ex.name}</h3>
+                <img src="https://loremflickr.com/400/250/workout,gym?lock=${index + 20}" alt="Workout" style="width:100%; height:160px; object-fit:cover; border-radius:8px; margin:0.5rem 0; background:#222;">
                 <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-                    <span style="font-size:0.7rem; padding:0.2rem 0.5rem; background:#333; border-radius:4px;">${ex.type}</span>
-                    <span style="font-size:0.7rem; padding:0.2rem 0.5rem; background:#333; border-radius:4px; color:${getDifficultyColor(ex.difficulty)}; font-weight:bold;">${ex.difficulty}</span>
+                    <span style="font-size:0.7rem; padding:0.2rem 0.5rem; background:#333; border-radius:4px; color:${getDifficultyColor(ex.difficulty)}; font-weight:bold; text-transform:capitalize;">${ex.difficulty}</span>
                 </div>
                 <p style="font-size:0.85rem; color:var(--text-dim); line-height:1.4; margin-top:0.5rem;">
-                    ${ex.instructions.length > 200 ? ex.instructions.substring(0, 200) + '...' : ex.instructions}
+                    ${ex.instructions.length > 300 ? ex.instructions.substring(0, 300) + '...' : ex.instructions}
                 </p>
             </div>
         `).join('');
