@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 signupForm.parentElement.innerHTML = `
                     <div class="success-message" style="text-align: center; padding: 2rem;">
                         <h3 style="color: #10b981;">✓ Signup Recorded!</h3>
-                        <p>Thank you, ${formData.name}. Thank you for signing up. I will contact you soon.</p>
+                        <p>Thank you, ${formData.name} for signing up. I will contact you soon.</p>
                         <div style="margin-top: 1.5rem;">
                             <button onclick="location.reload()" class="btn-secondary">Back</button>
                         </div>
