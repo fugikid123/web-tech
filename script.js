@@ -247,7 +247,141 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', revealOnScroll);
 
-    // --- 5. Programming Quotes API Integration ---
+    // --- 6. Interactive Posture Display ---
+    const postureItems = document.querySelectorAll('.posture-nav-item');
+    const displayTitle = document.getElementById('display-title');
+    const displayDesc = document.getElementById('display-description');
+    const displayImg = document.getElementById('display-image');
+    const displaySource = document.getElementById('display-source');
+
+    const postureData = {
+        apt: {
+            title: 'Anterior Pelvic Tilt (APT)',
+            desc: 'Excessive forward tilt of the pelvis, often caused by tight hip flexors and weak glutes/abs. It places high stress on the lower back during heavy lifts.',
+            img: 'https://backintelligence.com/wp-content/uploads/2018/01/anterior-pelvic-tilt-image.png',
+            source: 'Source: backintelligence.com'
+        },
+        head: {
+            title: 'Forward Head Posture',
+            desc: 'Commonly known as "tech neck," this shifts the center of gravity forward, straining the neck muscles and affecting breathing mechanics during exercise.',
+            img: 'https://noregretspt.com.au/wp-content/uploads/2025/02/Forward-Head-Posture-infographic.jpg',
+            source: 'Source: noregretspt.com.au'
+        },
+        shoulders: {
+            title: 'Rounded Shoulders',
+            desc: 'Resulting from tight pectoral muscles and weak upper back, this limitation restricts your range of motion in pressing and pulling movements.',
+            img: 'https://jackhanrahanfitness.com/wp-content/uploads/2017/08/r-shoulders-e1504721366824-1024x951.jpg',
+            source: 'Source: jackhanrahanfitness.com'
+        },
+        valgus: {
+            title: 'Knee Valgus',
+            desc: 'Knees collapsing inward during squats or lunges. This is often a sign of weak gluteus medius and can lead to significant knee joint issues.',
+            img: 'https://selectflex.com/cdn/shop/articles/effective-solutions-for-valgus-knees-840802.jpg?v=1700424812',
+            source: 'Source: selectflex.com'
+        },
+        feet: {
+            title: 'Flat Feet',
+            desc: 'Collapse of the medial arch affects the entire kinetic chain, potentially causing ankle, knee, and hip pain when performing standing exercises.',
+            img: 'https://storage.googleapis.com/treatspace-prod-media/pracimg/u-2202/shutterstock_2125649891.jpeg',
+            source: 'Source: shutterstock / treatspace'
+        }
+    };
+
+    postureItems.forEach(item => {
+        const updateDisplay = () => {
+            const type = item.getAttribute('data-posture');
+            const data = postureData[type];
+
+            if (data && displayTitle) {
+                // Update content
+                displayTitle.textContent = data.title;
+                displayDesc.textContent = data.desc;
+                displayImg.src = data.img;
+                displaySource.textContent = data.source;
+
+                // Update active state in sidebar
+                postureItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Trigger animation reset
+                const displayContent = document.querySelector('.posture-detail-content');
+                if (displayContent) {
+                    displayContent.style.animation = 'none';
+                    void displayContent.offsetWidth; // Trigger reflow
+                    displayContent.style.animation = 'fadeIn 0.4s ease-out';
+                }
+            }
+        };
+
+        item.addEventListener('mouseenter', updateDisplay);
+        item.addEventListener('click', updateDisplay); // For mobile/touch
+    });
+
+    // --- 7. Interactive Mobility Display ---
+    const mobilityItems = document.querySelectorAll('.mobility-nav-item');
+    const mobDisplayTitle = document.getElementById('mob-display-title');
+    const mobDisplayDesc = document.getElementById('mob-display-description');
+    const mobDisplayImg = document.getElementById('mob-display-image');
+    const mobDisplaySource = document.getElementById('mob-display-source');
+
+    const mobilityData = {
+        ankle: {
+            title: 'Ankle Dorsiflexion',
+            desc: 'Limited ankle range often leads to poor squat depth, knee compensation, and increased risk of lower body injuries. Proper ankle mobility is foundational for all leg exercises.',
+            img: 'https://i0.wp.com/e3rehab.com/wp-content/uploads/2023/11/C0004.00_01_44_04.Still010-scaled.jpg?fit=2560%2C1440&ssl=1',
+            source: 'Source: e3rehab.com'
+        },
+        shoulder: {
+            title: 'Shoulder Mobility',
+            desc: 'Restricted overhead range impacts press movements and posture. It can lead to compensations in the lower back and neck when trying to lift overhead.',
+            img: 'https://tommorrison.uk/storage/vVOL7Oz82er7CLDCXPYmoItVbJHwBrLdSv3cY8iD.jpeg  ',
+            source: 'Source: tommorrison.uk'
+        },
+        scapular: {
+            title: 'Scapular Mobility',
+            desc: 'Proper shoulder blade movement is key to avoiding shoulder impingement and ensuring strong pulling mechanics. It allows for a stable base during heavy lifts.',
+            img: 'https://s3.amazonaws.com/production.scholastica/public/attachments/33e4e791-a9c4-479a-8dfc-cfd98fa2e5dd/large/figure_5._scapular_retraction_test._the_examiner_first_performs_a_traditional_flexion_manual_strengt.png',
+            source: 'Source: scholastica / research'
+        },
+        hip: {
+            title: 'Hip Mobility',
+            desc: 'Crucial for effective leg training and protecting the lower back. Tight hips can cause the pelvis to tilt, leading to lower back pain and poor movement quality.',
+            img: 'https://noregretspt.com.au/wp-content/uploads/2025/02/Anterior-Hip-Stretching-good-vs-bad.png',
+            source: 'Source: noregretspt.com.au'
+        }
+    };
+
+    mobilityItems.forEach(item => {
+        const updateMobDisplay = () => {
+            const type = item.getAttribute('data-mobility');
+            const data = mobilityData[type];
+
+            if (data && mobDisplayTitle) {
+                // Update content
+                mobDisplayTitle.textContent = data.title;
+                mobDisplayDesc.textContent = data.desc;
+                mobDisplayImg.src = data.img;
+                mobDisplaySource.textContent = data.source;
+
+                // Update active state in sidebar
+                mobilityItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Trigger animation reset
+                const displayContent = document.querySelector('.mobility-detail-content');
+                if (displayContent) {
+                    displayContent.style.animation = 'none';
+                    void displayContent.offsetWidth; // Trigger reflow
+                    displayContent.style.animation = 'fadeIn 0.4s ease-out';
+                }
+            }
+        };
+
+        item.addEventListener('mouseenter', updateMobDisplay);
+        item.addEventListener('click', updateMobDisplay); // For mobile/touch
+    });
+
+    // --- 8. Programming Quotes API Integration ---
     const quoteText = document.querySelector('.quote-text');
     const quoteAuthor = document.querySelector('.quote-author');
     const newQuoteBtn = document.getElementById('new-quote-btn');

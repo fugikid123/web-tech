@@ -16,7 +16,10 @@
         <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Navigation"><span></span></label>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
+            <li><a href="#story">My Journey</a></li>
             <li><a href="#principles">Principles</a></li>
+            <li><a href="#posture">Posture</a></li>
+            <li><a href="#mobility">Mobility</a></li>
             <li><a href="#exercise-search">Explorer</a></li>
             <li><a href="#join">Join Now</a></li>
         </ul>
@@ -24,11 +27,43 @@
 
     <!-- Header / Hero Branding -->
     <div class="hero">
-        <h1>Muscle Foundations</h1>
-        <p>Master these pillars to maximize growth potential.</p>
+        <h1>Muscle Building Foundations</h1>
+        <p>- Resistance training (Hypertrophy) principles for effective muscle growth -</p>
     </div>
 
     <main>
+        <!-- My Story Section -->
+        <section id="story">
+            <h2>My Hypertrophy Journey</h2>
+            <div class="card story-card">
+                <p>
+                    My journey into fitness didn’t start from a place of strength — it started with pain.
+                    I spent long hours sitting in front of a computer, which led to persistent lower back pain.
+                    At the same time, I was eager to get stronger and started working out, but I had no real knowledge of resistance training.
+                </p>
+
+                <p>
+                    Because of that, I avoided important exercises like leg training, and after about two years of lifting with poor technique and no proper understanding, I ended up with a shoulder injury.
+                    At that point, I realised that training without knowledge is not just ineffective — it’s dangerous.
+                </p>
+
+                <p>
+                    That’s when I decided to take things seriously. I studied the fundamentals of resistance training, biomechanics, and proper movement.
+                    I also worked as a personal trainer to gain real-world coaching experience and understand how different bodies move and adapt.
+                </p>
+
+                <p>
+                    Through structured training and proper technique, I was able to fix my lower back pain and regain my shoulder strength.
+                    More importantly, I learned how to train safely and effectively.
+                </p>
+
+                <p>
+                    Now, my goal is simple — to help others avoid the same mistakes.
+                    This hypertrophy introduction page is built to guide beginners so they can build muscle, improve posture, and stay injury-free from the start.
+                </p>
+            </div>
+        </section>
+
         <!-- Core Principles Grid -->
         <section id="principles">
             <h2>Core Principles</h2>
@@ -56,6 +91,71 @@
                     <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300" alt="Rest and recovery" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin:1rem 0;">
                     <p style="font-size:0.9rem; color:var(--text-dim);">Ensuring adequate sleep and nutrition for muscle repair.</p>
                 </article>
+            </div>
+        </section>
+
+        <!-- Posture Problems -->
+        <section id="posture">
+            <h2>Common Posture Problems</h2>
+            <p style="color: var(--text-dim); margin-bottom: 2rem;">Common postural imbalances can significantly impact your performance and increase injury risk.</p>
+            
+            <div class="posture-container-split">
+                <!-- Left: List of items -->
+                <div class="posture-sidebar">
+                    <ul class="posture-nav-list">
+                        <li class="posture-nav-item active" data-posture="apt">Anterior Pelvic Tilt (APT)</li>
+                        <li class="posture-nav-item" data-posture="head">Forward Head Posture</li>
+                        <li class="posture-nav-item" data-posture="shoulders">Rounded Shoulders</li>
+                        <li class="posture-nav-item" data-posture="valgus">Knee Valgus</li>
+                        <li class="posture-nav-item" data-posture="feet">Flat Feet</li>
+                    </ul>
+                </div>
+
+                <!-- Right: Display Area -->
+                <div class="posture-display-card">
+                    <div id="posture-detail-display" class="posture-detail-content">
+                        <div class="posture-info">
+                            <h3 id="display-title">Anterior Pelvic Tilt (APT)</h3>
+                            <p id="display-description">Excessive forward tilt of the pelvis, often caused by tight hip flexors and weak glutes/abs. It places high stress on the lower back during heavy lifts.</p>
+                        </div>
+                        <div class="posture-visual">
+                            <img id="display-image" src="https://backintelligence.com/wp-content/uploads/2018/01/anterior-pelvic-tilt-image.png" alt="Posture Illustration">
+                            <span id="display-source" class="img-source">Source: backintelligence.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobility Limitations -->
+        <section id="mobility">
+            <h2>Common Mobility Limitations</h2>
+            <p style="color: var(--text-dim); margin-bottom: 2rem;">Hover over the mobility items to see details and visual references.</p>
+            
+            <div class="mobility-container-split">
+                <!-- Left: List of items -->
+                <div class="mobility-sidebar">
+                    <ul class="mobility-nav-list">
+                        <li class="mobility-nav-item active" data-mobility="ankle">Ankle Dorsiflexion</li>
+                        <li class="mobility-nav-item" data-mobility="shoulder">Shoulder Mobility</li>
+                        <li class="mobility-nav-item" data-mobility="scapular">Scapular Mobility</li>
+                        <li class="mobility-nav-item" data-mobility="hip">Hip Mobility</li>
+                    </ul>
+                </div>
+
+                <!-- Right: Display Area -->
+                <div class="mobility-display-card">
+                    <div id="mobility-detail-display" class="mobility-detail-content">
+                        <div class="mobility-info">
+                            <h3 id="mob-display-title">Ankle Dorsiflexion</h3>
+                            <p id="mob-display-description">Limited ankle range often leads to poor squat depth, knee compensation, and increased risk of lower body injuries.</p>
+                        </div>
+                        <div class="mobility-visual">
+                            <img id="mob-display-image" src="https://i0.wp.com/e3rehab.com/wp-content/uploads/2023/11/C0004.00_01_44_04.Still010-scaled.jpg?fit=2560%2C1440&ssl=1" alt="Mobility Illustration">
+                            <span id="mob-display-source" class="img-source">Source: e3rehab.com</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -142,7 +242,8 @@
         <p>&copy; 2026 Hypertrophy Lab. Synchronized Dark & Red Theme.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="shared.js"></script>
+    <script src="hypertrophy-script.js"></script>
 
 </body>
 </html>
