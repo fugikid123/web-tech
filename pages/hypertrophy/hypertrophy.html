@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hypertrophy Principles - Dark & Red</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
 
@@ -15,23 +15,44 @@
         <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Navigation"><span></span></label>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../../index.html">Home</a></li>
             <li><a href="#story">My Journey</a></li>
             <li><a href="#principles">Principles</a></li>
             <li><a href="#posture">Posture</a></li>
             <li><a href="#mobility">Mobility</a></li>
             <li><a href="#exercise-search">Explorer</a></li>
             <li><a href="#join">Join Now</a></li>
+            <li><button id="login-nav-btn" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem; margin-left: 1rem;">Login</button></li>
         </ul>
     </nav>
 
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content card">
+            <span class="close-modal">&times;</span>
+            <h2 style="border-left: none; padding-left: 0; text-align: center;">User Login</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required placeholder="user1">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="•••••">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Login</button>
+                <p id="login-error" class="error-message" style="text-align: center; margin-top: 1rem;">Invalid credentials. Please try again.</p>
+            </form>
+        </div>
+    </div>
+
     <!-- Header / Hero Branding -->
-    <div class="hero">
+    <div class="hero" id="page-hero">
         <h1>Muscle Building Foundations</h1>
         <p>- Resistance training (Hypertrophy) principles for effective muscle growth -</p>
     </div>
 
-    <main>
+    <main id="main-content">
         <!-- My Story Section -->
         <section id="story">
             <h2>My Hypertrophy Journey</h2>
@@ -112,7 +133,7 @@
                 </div>
 
                 <!-- Right: Display Area -->
-                <div class="posture-display-card">
+                <div id="info-box" class="posture-display-card">
                     <div id="posture-detail-display" class="posture-detail-content">
                         <div class="posture-info">
                             <h3 id="display-title">Anterior Pelvic Tilt (APT)</h3>
@@ -144,7 +165,7 @@
                 </div>
 
                 <!-- Right: Display Area -->
-                <div class="mobility-display-card">
+                <div id="info-box" class="mobility-display-card">
                     <div id="mobility-detail-display" class="mobility-detail-content">
                         <div class="mobility-info">
                             <h3 id="mob-display-title">Ankle Dorsiflexion</h3>
@@ -231,7 +252,7 @@
 
                     <div style="margin-top:1.5rem;">
                         <button type="submit" class="btn-primary">Get Training Guide</button>
-                        <button type="reset" class="btn-secondary">Clear</button>
+                        <button type="reset" class="btn-primary">Clear</button>
                     </div>
                 </form>
             </div>
@@ -242,7 +263,7 @@
         <p>&copy; 2026 Hypertrophy Lab. Synchronized Dark & Red Theme.</p>
     </footer>
 
-    <script src="shared.js"></script>
+    <script src="../../assets/js/shared.js"></script>
     <script src="hypertrophy-script.js"></script>
 
 </body>

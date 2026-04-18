@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Dashboard - Hypertrophy Lab</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <style>
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-left: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 1px solid #333;
+        }
+        .nav-user-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--accent-red);
+            object-fit: cover;
+        }
+        .nav-user-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        @media (max-width: 768px) {
+            .nav-user {
+                margin: 1rem 0;
+                padding: 1rem 0;
+                border-left: none;
+                border-top: 1px solid #333;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="dashboard-page">
+
+    <!-- Dashboard Navigation -->
+    <nav>
+        <div class="nav-brand"><b>Hypertrophy.</b></div>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Navigation"><span></span></label>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="#timeline-section">Progress</a></li>
+            <li><a href="#workout-section">Workout</a></li>
+            <li><a href="#trends">Tracker</a></li>
+            <li class="nav-user">
+                <img src="../../assets/images/user1-avatar.jpg" class="nav-user-img" id="nav-avatar">
+                <span class="nav-user-name" id="nav-username">Daniel</span>
+                <button id="logout-btn" class="btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">Logout</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard Hero -->
+    <div class="hero" id="page-hero">
+        <div id="hero-content">
+            <h1>Loading Dashboard...</h1>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Content will be injected by dashboard-script.js -->
+        <div style="text-align: center; padding: 5rem;">
+            <div class="spinner"></div>
+            <p>Gathering your progress data...</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Hypertrophy Lab. Secure User Dashboard.</p>
+    </footer>
+
+    <script src="../../assets/js/shared.js"></script>
+    <script src="dashboard-script.js"></script>
+
+</body>
+</html>

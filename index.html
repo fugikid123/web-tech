@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Professional Portfolio - Dark & Red</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
   </nav>
 
   <div class="hero">
-    <img src="avatar.jpg" alt="My Avatar">
+    <img src="assets/images/avatar.jpg" alt="My Avatar">
     <h1>Minh Tran</h1>
     <p>IT Student | Developer | Cybersecurity Enthusiast</p>
   </div>
@@ -61,88 +61,87 @@
 
     <section id="projects">
       <h2>Projects</h2>
-      <div class="card" style="border: none; background: transparent; padding: 0;">
-        <p style="margin-bottom: 2rem;">Explore my portfolio. Hover over each card to reveal details and links.</p>
-        
-        <div class="projects-grid">
-          <!-- Web Tech Card (Merged Task 1 & 2) -->
-          <article class="project-card" tabindex="0">
-            <div class="project-header">
-              <h3 class="project-short">Web Technologies</h3>
-            </div>
-
-            <div class="project-details">
-              <p class="description">A collection of laboratory tasks focusing on ES6+, DOM APIs, and responsive design.</p>
-              <ul class="project-items">
-                <div><a href="hypertrophy.html" class="task-link">Task 1: Hypertrophy</a></div>
-                <div><a href="tasks.html" class="task-link">Practical Tasks</a></div>
-              </ul>
+      <div class="projects-container-split">
+        <div class="projects-list">
+          <!-- Web Tech Card -->
+          <article class="project-card-interactive" 
+                   data-title="Web Technologies Lab Work"
+                   data-description="A collection of laboratory tasks focusing on ES6+, DOM APIs, and responsive design."
+                   data-time="(...)"
+                   data-institution="(...)">
+            <h3 class="project-short">Web Technologies</h3>
+            <div class="project-links">
+              <a href="pages/hypertrophy/hypertrophy.html" class="task-link">Task 1: Hypertrophy</a>
+              <a href="pages/tasks/tasks.html" class="task-link">Practical Tasks</a>
             </div>
           </article>
 
           <!-- BookStock Card -->
-          <article class="project-card" tabindex="0">
-            <div class="project-header">
-              <h3 class="project-short">BookStock</h3>
-            </div>
-
-            <div class="project-details">
-              <p class="description">A Java-based inventory management application for tracking book supplies and stock levels.</p>
-              <ul class="project-items">
-                <li>Inventory management</li>
-                <li>Stock level tracking</li>
-                <li>CRUD operations</li>
-              </ul>
+          <article class="project-card-interactive" 
+                   data-title="BookStock Inventory System"
+                   data-description="A Java-based inventory management application for tracking book supplies and stock levels."
+                   data-time="(...)"
+                   data-institution="(...)">
+            <h3 class="project-short">BookStock</h3>
+            <div class="project-links">
+              <a href="#" class="task-link">View Project</a>
             </div>
           </article>
 
           <!-- Student Database Card -->
-          <article class="project-card" tabindex="0">
-            <div class="project-header">
-              <h3 class="project-short">Student Database</h3>
-            </div>
-
-            <div class="project-details">
-              <p class="description">A comprehensive relational database designed for managing university housing and student records.</p>
-              <ul class="project-items">
-                <li>Relational schema design</li>
-                <li>Student record management</li>
-                <li>Housing & assignments</li>
-              </ul>
+          <article class="project-card-interactive" 
+                   data-title="University Student Housing Database"
+                   data-description="A comprehensive relational database designed for managing university housing and student records."
+                   data-time="(...)"
+                   data-institution="(...)">
+            <h3 class="project-short">Student Database</h3>
+            <div class="project-links">
+              <a href="#" class="task-link">View Schema</a>
             </div>
           </article>
 
           <!-- UI-UX Card -->
-          <article class="project-card" tabindex="0">
-            <div class="project-header">
-              <h3 class="project-short">UI-UX Design</h3>
-            </div>
-
-            <div class="project-details">
-              <p class="description">Prototype designs focused on user-centric interfaces, accessibility, and seamless navigation.</p>
-              <ul class="project-items">
-                <li>Wireframes & prototypes</li>
-                <li>Accessibility considerations</li>
-                <li>UX flow improvements</li>
-              </ul>
+          <article class="project-card-interactive" 
+                   data-title="User Interface & Experience Design Prototypes"
+                   data-description="Prototype designs focused on user-centric interfaces, accessibility, and seamless navigation."
+                   data-time="(...)"
+                   data-institution="(...)">
+            <h3 class="project-short">UI-UX Design</h3>
+            <div class="project-links">
+              <a href="3C - NerdyBro!/index.html" class="task-link">View Prototype</a>
             </div>
           </article>
 
           <!-- Social Data Card -->
-          <article class="project-card" tabindex="0">
-            <div class="project-header">
-              <h3 class="project-short">Social Data</h3>
-            </div>
-
-            <div class="project-details">
-              <p class="description">A system built to analyze and visualize data patterns from social platforms using Python.</p>
-              <ul class="project-items">
-                <li>Data analysis with Python</li>
-                <li>Visualization & reporting</li>
-                <li>Pattern discovery</li>
-              </ul>
+          <article class="project-card-interactive" 
+                   data-title="Social Media Data Analysis System"
+                   data-description="A system built to analyze and visualize data patterns from social platforms using Python."
+                   data-time="(...)"
+                   data-institution="(...)">
+            <h3 class="project-short">Social Data</h3>
+            <div class="project-links">
+              <a href="#" class="task-link">View Analysis</a>
             </div>
           </article>
+        </div>
+
+        <div class="project-info-box" id="project-info-box">
+          <div class="info-placeholder">
+            <p>Hover over a project to see more details.</p>
+          </div>
+          <div class="info-content hidden">
+            <h3 id="info-title"></h3>
+            <div class="info-image-placeholder">
+              <span>Project Preview (Coming Soon)</span>
+            </div>
+            <div class="info-details">
+              <p id="info-description"></p>
+              <div class="info-meta">
+                <p><strong>Time:</strong> <span id="info-time"></span></p>
+                <p><strong>Institution:</strong> <span id="info-institution"></span></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -184,8 +183,8 @@
     © 2026 Professional Portfolio. Synchronized Dark & Red Theme.
   </footer>
 
-  <script src="shared.js"></script>
-  <script src="index-script.js"></script>
+  <script src="assets/js/shared.js"></script>
+  <script src="assets/js/index-script.js"></script>
 
 </body>
 </html>

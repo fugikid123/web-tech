@@ -1,7 +1,12 @@
 /**
- * Hypertrophy Page Specific Logic
+ * Hypertrophy Page Logic (Cleaned for Principles Only)
  */
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if already logged in and redirect to dashboard
+    if (localStorage.getItem('logged_in_user')) {
+        window.location.href = '../dashboard/dashboard.html';
+    }
+
     // --- 1. Posture Interactive Display ---
     const postureItems = document.querySelectorAll('.posture-nav-item');
     const displayTitle = document.getElementById('display-title');
@@ -57,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (displayContent) {
                     displayContent.style.animation = 'none';
                     void displayContent.offsetWidth;
-                    displayContent.style.animation = 'fadeIn 0.4s ease-out';
+                    displayContent.style.animation = 'fadeInProject 0.5s ease-out forwards';
                 }
             }
         };
@@ -114,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (displayContent) {
                     displayContent.style.animation = 'none';
                     void displayContent.offsetWidth;
-                    displayContent.style.animation = 'fadeIn 0.4s ease-out';
+                    displayContent.style.animation = 'fadeInProject 0.5s ease-out forwards';
                 }
             }
         };
@@ -159,7 +164,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (exerciseBtn) exerciseBtn.addEventListener('click', fetchExercises);
 
-    // --- 4. Form Validation ---
+    // --- 4. Login Redirect Logic ---
+    const loginModal = document.getElementById('login-modal');
+    const loginNavBtn = document.getElementById('login-nav-btn');
+    const closeLoginBtn = document.querySelector('.close-modal');
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+
+    if (loginNavBtn) {
+        loginNavBtn.addEventListener('click', () => loginModal.classList.remove('hidden'));
+    }
+
+    if (closeLoginBtn) {
+        closeLoginBtn.addEventListener('click', () => loginModal.classList.add('hidden'));
+    }
+
+    window.onclick = (event) => {
+        if (event.target == loginModal) loginModal.classList.add('hidden');
+    };
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if (user === 'user1' && pass === '12345') {
+                localStorage.setItem('logged_in_user', 'user1');
+                window.location.href = '../dashboard/dashboard.html';
+            } else if (user === 'ad' && pass === '123') {
+                localStorage.setItem('logged_in_user', 'admin');
+                window.location.href = '../dashboard/dashboard.html';
+            } else {
+                loginError.style.opacity = '1';
+                setTimeout(() => { loginError.style.opacity = '0'; }, 3000);
+            }
+        });
+    }
+
+    // --- 5. Form Validation ---
     const signupForm = document.querySelector('form');
     if (signupForm) {
         const inputs = signupForm.querySelectorAll('input, select');
@@ -181,13 +224,14 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const record = window.AppDB.save('hypertrophy_signups', formData);
+                // Assuming window.AppDB is available from shared.js
+                if (window.AppDB) window.AppDB.save('hypertrophy_signups', formData);
                 signupForm.parentElement.innerHTML = `
                     <div class="success-message" style="text-align: center; padding: 2rem;">
                         <h3 style="color: #10b981;">✓ Signup Recorded!</h3>
                         <p>Thank you, ${formData.name} for signing up. I will contact you soon.</p>
                         <div style="margin-top: 1.5rem;">
-                            <button onclick="location.reload()" class="btn-secondary">Back</button>
+                            <button onclick="location.reload()" class="btn-primary">Back</button>
                         </div>
                     </div>
                 `;
