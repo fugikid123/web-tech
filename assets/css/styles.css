@@ -881,10 +881,31 @@ footer {
     animation: fadeInProject 0.5s ease-out;
 }
 
+.timeline-detail-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 /* Mobile Adjustments for Timeline */
 @media (max-width: 900px) {
     .timeline-split-container {
         grid-template-columns: 1fr;
+    }
+    
+    #info-box {
+        padding: 1.25rem !important;
+        min-height: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .info-visual img {
+        max-height: 300px !important;
+    }
+
+    .timeline-detail-display h3 {
+        font-size: 1.5rem !important;
     }
     
     .timeline-visual-nav {
@@ -1101,10 +1122,25 @@ footer {
     min-height: 500px; /* Consistent height */
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Anchor content to the left */
+    align-items: stretch; /* Ensure content fills width */
     justify-content: flex-start; /* Anchor content to the top */
     transition: border-color 0.3s ease;
     width: 100%;
+    box-sizing: border-box;
+}
+
+.info-visual {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.info-visual img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: contain;
 }
 
 .posture-info, .mobility-info {

@@ -96,23 +96,23 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="timeline-detail-display">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
                     <div>
-                        <h3 style="color: var(--accent-red); margin: 0; font-size: 2rem;">${entry.date}</h3>
-                        <p style="color: var(--text-dim); margin-top: 0.5rem; font-size: 1.1rem;">Phase Result</p>
+                        <h3 style="color: var(--accent-red); margin: 0; font-size: 2rem;">Phase ${idx + 1}</h3>
+                        <p style="color: var(--text-dim); margin-top: 0.5rem; font-size: 1.1rem;">${entry.date} — Result</p>
                     </div>
                     ${isAdmin ? `<button class="btn-primary delete-entry" data-index="${idx}">Delete Entry</button>` : ''}
                 </div>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="timeline-detail-grid">
                     <div class="info-visual">
                         <img src="${entry.photo}" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid var(--border-color);">
                     </div>
                     <div class="info-details">
-                        <div class="card" style="margin-top: 0; background: rgba(255,255,255,0.02);">
-                            <h4 style="margin-top: 0; color: var(--accent-red); font-size: 0.9rem; text-transform: uppercase;">Nutrient Breakdown</h4>
-                            <div style="display: flex; gap: 2rem; margin-top: 1rem;">
-                                <div><div style="font-size: 1.25rem; font-weight: bold;">${entry.protein}g</div><div style="font-size: 0.75rem; color: var(--text-dim);">Protein</div></div>
-                                <div><div style="font-size: 1.25rem; font-weight: bold;">${entry.carb}g</div><div style="font-size: 0.75rem; color: var(--text-dim);">Carbs</div></div>
-                                <div><div style="font-size: 1.25rem; font-weight: bold;">${entry.fat}g</div><div style="font-size: 0.75rem; color: var(--text-dim);">Fats</div></div>
+                        <div class="card" style="margin-top: 0; background: rgba(255,255,255,0.02); padding: 1.5rem;">
+                            <h4 style="margin-top: 0; color: var(--accent-red); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">Nutrient Breakdown</h4>
+                            <div style="display: flex; gap: 2rem; margin-top: 1.25rem; flex-wrap: wrap;">
+                                <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--text-main);">${entry.protein}g</div><div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Protein</div></div>
+                                <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--text-main);">${entry.carb}g</div><div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Carbs</div></div>
+                                <div><div style="font-size: 1.5rem; font-weight: bold; color: var(--text-main);">${entry.fat}g</div><div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Fats</div></div>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${data.timeline.map((entry, idx) => `
                                 <div class="timeline-point ${idx === 0 ? 'active' : ''}" data-index="${idx}">
                                     <div class="timeline-circle"></div>
-                                    <div class="timeline-date">${entry.date}</div>
+                                    <div class="timeline-date">Phase ${idx + 1}</div>
                                 </div>
                             `).join('')}
                         </div>
