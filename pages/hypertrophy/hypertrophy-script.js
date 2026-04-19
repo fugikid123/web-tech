@@ -164,7 +164,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (exerciseBtn) exerciseBtn.addEventListener('click', fetchExercises);
 
-    // --- 4. Login Redirect Logic ---
+    // --- 4. Auto-Album Cycle Logic ---
+    const albums = {
+        fitness: {
+            imgId: 'fitness-img',
+            captionId: 'fitness-album',
+            images: [
+                { url: '../../assets/images/Fitness transform/Female bef-aft.png', name: 'Sarah J.', period: '6 Months' },
+                { url: '../../assets/images/Fitness transform/Male bef-aft.png', name: 'Michael T.', period: '9 Months' },
+                { url: '../../assets/images/Fitness transform/Senior bef-aft.png', name: 'Arthur P.', period: '8 Months' }
+            ],
+            index: 0
+        },
+        posture: {
+            imgId: 'posture-img',
+            captionId: 'posture-album',
+            images: [
+                { url: '../../assets/images/Posture transform/Firefly_Gemini Flash_Before and after posture correction of a teenage boy, side by side comparison, same p 925209.png', name: 'Leo K.', period: '4 Months' },
+                { url: '../../assets/images/Posture transform/Firefly_Gemini Flash_Before and after posture correction of a teenage girl, side view comparison, same per 99139.png', name: 'Sophie V.', period: '5 Months' },
+                { url: '../../assets/images/Posture transform/Firefly_Gemini Flash_the before posture, make 2 knees bend in 99139.png', name: 'David L.', period: '7 Months' }
+            ],
+            index: 0
+        }
+    };
+
+    function initAlbum(albumKey) {
+        const album = albums[albumKey];
+        const imgElement = document.getElementById(album.imgId);
+        const container = imgElement.parentElement;
+        const caption = document.querySelector(`#${album.captionId} .album-caption`);
+
+        const updateView = (index) => {
+            const imageData = album.images[index];
+            imgElement.src = imageData.url;
+            if (caption) {
+                caption.innerHTML = `<strong>${imageData.name}</strong> — ${imageData.period} of training`;
+            }
+        };
+
+        // Auto-cycle logic
+        setInterval(() => {
+            album.index = (album.index + 1) % album.images.length;
+            container.style.opacity = '0';
+            setTimeout(() => {
+                updateView(album.index);
+                container.style.opacity = '1';
+            }, 400);
+        }, 5000);
+
+        updateView(0);
+    }
+
+    if (document.getElementById('fitness-img')) initAlbum('fitness');
+    if (document.getElementById('posture-img')) initAlbum('posture');
+
+    // --- 5. Login Redirect Logic ---
     const loginModal = document.getElementById('login-modal');
     const loginNavBtn = document.getElementById('login-nav-btn');
     const closeLoginBtn = document.querySelector('.close-modal');
@@ -241,3 +295,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
