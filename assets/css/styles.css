@@ -236,7 +236,183 @@ button {
   transition: opacity 0.2s;
 }
 
-/* --- Expanding Project Grid --- */
+/* --- Split Projects Section --- */
+.projects-container-split {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 2rem;
+  min-height: 450px;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-card-interactive {
+  background: var(--card-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card-interactive:hover,
+.project-card-interactive.active {
+  border-color: var(--accent-red);
+  background: rgba(225, 29, 72, 0.03);
+  transform: translateX(8px);
+}
+
+.project-card-interactive .project-short {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+.project-card-interactive:hover .project-short,
+.project-card-interactive.active .project-short {
+  color: var(--accent-red);
+}
+
+/* Smaller items (links) shown on hover */
+.project-links {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-card-interactive:hover .project-links,
+.project-card-interactive.active .project-links {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.task-link {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+}
+
+.task-link:hover {
+  background: rgba(225, 29, 72, 0.1);
+  color: var(--text-main);
+  border-left-color: var(--accent-red);
+  padding-left: 1rem;
+}
+
+/* Info Box Styling */
+.project-info-box {
+  background: var(--card-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  position: sticky;
+  top: 100px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.info-placeholder {
+  text-align: center;
+  color: var(--text-dim);
+  font-style: italic;
+  padding: 2rem;
+}
+
+.info-content {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.info-content.hidden {
+  display: none !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.info-content h3 {
+  margin-top: 0;
+  font-size: 1.75rem;
+  color: var(--accent-red);
+  margin-bottom: 1.5rem;
+}
+
+.info-image-placeholder {
+  width: 100%;
+  height: 200px;
+  background: #111;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  border: 1px dashed #333;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.info-details p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.info-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.info-meta p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.info-meta strong {
+  display: block;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 900px) {
+  .projects-container-split {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-info-box {
+    position: static;
+    min-height: auto;
+  }
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -696,30 +872,92 @@ button {
     background: rgba(225, 29, 72, 0.05);
 }
 
-/* --- Transformation Album Gallery --- */
+/* --- Transformation Album Gallery (Interactive Side-bar) --- */
 .comparison-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    display: flex;
+    gap: 1rem;
     margin-top: 2rem;
+    min-height: 550px;
+    align-items: stretch;
 }
 
 .comparison-card {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--card-dark);
+    border: 1px solid var(--border-color);
+    position: relative;
 }
+
+.comparison-card.active {
+    flex: 9;
+    border-color: var(--accent-red);
+    background: rgba(225, 29, 72, 0.02);
+}
+
+.comparison-card:not(.active) {
+    flex: 0 0 60px;
+    background: #111;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hide content when not active */
+.comparison-card:not(.active) h3,
+.comparison-card:not(.active) .album-container,
+.comparison-card:not(.active) .album-caption {
+    display: none;
+}
+
+/* Arrow for inactive */
+.comparison-card:not(.active)::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid var(--accent-red);
+    border-right: 3px solid var(--accent-red);
+    display: block;
+}
+
+#fitness-album:not(.active)::before {
+    transform: rotate(45deg); /* Points right */
+}
+
+#posture-album:not(.active)::before {
+    transform: rotate(-135deg); /* Points left */
+}
+
+/* Vertical Title for Sidebar */
+.comparison-card:not(.active)::after {
+    content: attr(id);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 2rem;
+}
+
+#fitness-album:not(.active)::after { content: "FITNESS ALBUM"; }
+#posture-album:not(.active)::after { content: "POSTURE ALBUM"; }
 
 .comparison-card h3 {
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     color: var(--accent-red);
+    white-space: nowrap;
 }
 
 .album-container {
     width: 100%;
-    aspect-ratio: 16/9;
+    flex-grow: 1;
     background: #000;
     border-radius: 8px;
     overflow: hidden;
@@ -732,16 +970,48 @@ button {
 .album-photo {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Shows the original photo fully without cropping */
+    object-fit: contain;
 }
 
 .album-caption {
     font-size: 0.9rem;
     margin-top: 1rem;
     color: var(--text-dim);
-    font-style: italic;
+    white-space: nowrap;
 }
 
+@media (max-width: 900px) {
+    .comparison-grid {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .comparison-card.active, .comparison-card:not(.active) {
+        flex: none !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto;
+    }
+
+    .comparison-card:not(.active) {
+        padding: 1rem;
+        height: 60px;
+        flex-direction: row;
+    }
+
+    .comparison-card:not(.active)::after {
+        writing-mode: horizontal-tb;
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+
+    #posture-album:not(.active)::before {
+        transform: rotate(135deg); /* Points down */
+    }
+    #fitness-album:not(.active)::before {
+        transform: rotate(135deg); /* Points down */
+    }
+}
 /* --- Footer --- */
 footer {
   text-align: center;
@@ -1168,7 +1438,16 @@ footer {
     width: 100%;
     margin-top: 2rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.img-source, #mob-display-source {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    font-style: italic;
+    opacity: 0.8;
 }
 
 #info-box:hover {

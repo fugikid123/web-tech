@@ -218,6 +218,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('fitness-img')) initAlbum('fitness');
     if (document.getElementById('posture-img')) initAlbum('posture');
 
+    // --- 4b. Album Active State Toggle ---
+    const comparisonCards = document.querySelectorAll('.comparison-card');
+    comparisonCards.forEach(card => {
+        card.addEventListener('click', () => {
+            comparisonCards.forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+        });
+    });
+    // Default first one to active
+    if (comparisonCards.length > 0) comparisonCards[0].classList.add('active');
+
     // --- 5. Login Redirect Logic ---
     const loginModal = document.getElementById('login-modal');
     const loginNavBtn = document.getElementById('login-nav-btn');
