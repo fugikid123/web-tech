@@ -289,21 +289,30 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // Assuming window.AppDB is available from shared.js
                 if (window.AppDB) window.AppDB.save('hypertrophy_signups', formData);
-                signupForm.parentElement.innerHTML = `
-                    <div class="success-message" style="text-align: center; padding: 2rem;">
-                        <h3 style="color: #10b981;">✓ Signup Recorded!</h3>
-                        <p>Thank you, ${formData.name} for signing up. I will contact you soon.</p>
-                        <div style="margin-top: 1.5rem;">
-                            <button onclick="location.reload()" class="btn-primary">Back</button>
-                        </div>
-                    </div>
-                `;
+                
+                // Show Success Modal
+                const successModal = document.getElementById('success-modal');
+                const successMsg = document.getElementById('success-msg');
+                if (successModal) {
+                    if (successMsg) successMsg.textContent = `Thank you, ${formData.name} for signing up. I will contact you soon.`;
+                    successModal.classList.remove('hidden');
+                    signupForm.reset();
+                    // Remove valid classes from inputs
+                    inputs.forEach(input => input.classList.remove('valid'));
+                }
             } catch (error) {
                 alert('Error saving details.');
             }
         });
+
+        // Close Success Modal
+        const closeSuccess = document.getElementById('close-success');
+        const successDoneBtn = document.getElementById('success-done-btn');
+        const successModal = document.getElementById('success-modal');
+
+        if (closeSuccess) closeSuccess.onclick = () => successModal.classList.add('hidden');
+        if (successDoneBtn) successDoneBtn.onclick = () => successModal.classList.add('hidden');
     }
 });
 
