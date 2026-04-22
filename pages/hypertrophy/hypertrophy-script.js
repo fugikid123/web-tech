@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 5. Form Validation ---
-    const signupForm = document.querySelector('form');
+    const signupForm = document.getElementById('signup-form');
     if (signupForm) {
         const inputs = signupForm.querySelectorAll('input, select');
         inputs.forEach(input => {
