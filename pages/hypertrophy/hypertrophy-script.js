@@ -280,29 +280,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const formData = {
-                name: signupForm.name.value,
-                email: signupForm.email.value,
-                age: signupForm.age.value,
-                level: signupForm.level.value,
-                days: Array.from(signupForm.querySelectorAll('input[name="days"]:checked')).map(el => el.value)
-            };
+            
+            // Simple validation check (HTML5 validation handles most)
+            if (!signupForm.checkValidity()) {
+                return;
+            }
 
-            try {
-                if (window.AppDB) window.AppDB.save('hypertrophy_signups', formData);
+            const userName = signupForm.name.value;
                 
-                // Show Success Modal
-                const successModal = document.getElementById('success-modal');
-                const successMsg = document.getElementById('success-msg');
-                if (successModal) {
-                    if (successMsg) successMsg.textContent = `Thank you, ${formData.name} for signing up. I will contact you soon.`;
-                    successModal.classList.remove('hidden');
-                    signupForm.reset();
-                    // Remove valid classes from inputs
-                    inputs.forEach(input => input.classList.remove('valid'));
-                }
-            } catch (error) {
-                alert('Error saving details.');
+            // Show Success Modal
+            const successModal = document.getElementById('success-modal');
+            const successMsg = document.getElementById('success-msg');
+            if (successModal) {
+                if (successMsg) successMsg.textContent = `Thank you, ${userName} for signing up. I will contact you soon.`;
+                successModal.classList.remove('hidden');
+                signupForm.reset();
+                // Remove valid classes from inputs
+                inputs.forEach(input => input.classList.remove('valid'));
             }
         });
 
