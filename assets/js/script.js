@@ -1,5 +1,5 @@
 /**
- * Professional Portfolio Interactivity Script
+ * General Interactivity Script
  * Using ES6+, DOM API, and Events
  */
 
