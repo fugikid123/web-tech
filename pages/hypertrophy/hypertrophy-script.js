@@ -267,46 +267,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. Form Validation ---
-    const signupForm = document.getElementById('signup-form');
+    // --- 5. Form Validation (Matched with Index Page Style) ---
+    const signupForm = document.querySelector('section#join form');
     if (signupForm) {
         const inputs = signupForm.querySelectorAll('input, select');
+
+        const validateField = (input) => {
+            if (input.checkValidity() && input.value.trim() !== '') {
+                input.classList.add('valid');
+                input.classList.remove('invalid');
+            } else if (input.hasAttribute('required')) {
+                input.classList.add('invalid');
+                input.classList.remove('valid');
+            }
+        };
+
         inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                if (input.checkValidity()) input.classList.add('valid');
-                else input.classList.remove('valid');
-            });
+            input.addEventListener('input', () => validateField(input));
+            input.addEventListener('blur', () => validateField(input));
         });
 
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Simple validation check (HTML5 validation handles most)
             if (!signupForm.checkValidity()) {
                 return;
             }
 
             const userName = signupForm.name.value;
                 
-            // Show Success Modal
-            const successModal = document.getElementById('success-modal');
-            const successMsg = document.getElementById('success-msg');
-            if (successModal) {
-                if (successMsg) successMsg.textContent = `Thank you, ${userName} for signing up. I will contact you soon.`;
-                successModal.classList.remove('hidden');
-                signupForm.reset();
-                // Remove valid classes from inputs
-                inputs.forEach(input => input.classList.remove('valid'));
-            }
+            signupForm.parentElement.innerHTML = `
+                <div class="success-message" style="text-align: center; padding: 2rem;">
+                    <h3 style="color: #10b981;">✓ Signup Recorded!</h3>
+                    <p>Thank you, ${userName} for signing up. Your request has been recorded. I will contact you soon!</p>
+                    <div style="margin-top: 1.5rem;">
+                        <button onclick="location.reload()" class="btn-primary">Back</button>
+                    </div>
+                </div>
+            `;
         });
-
-        // Close Success Modal
-        const closeSuccess = document.getElementById('close-success');
-        const successDoneBtn = document.getElementById('success-done-btn');
-        const successModal = document.getElementById('success-modal');
-
-        if (closeSuccess) closeSuccess.onclick = () => successModal.classList.add('hidden');
-        if (successDoneBtn) successDoneBtn.onclick = () => successModal.classList.add('hidden');
     }
 });
 
