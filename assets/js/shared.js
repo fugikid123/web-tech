@@ -92,7 +92,78 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- 5. Hidden Admin Shortcut (Ctrl + Shift + S) ---
+    // --- 5. Unified Special Interactive List Logic ---
+    const initInteractiveLists = () => {
+        const interactiveLists = document.querySelectorAll('.special-interactive-list');
+        
+        interactiveLists.forEach(list => {
+            const items = list.querySelectorAll('.interactive-item');
+            const displayTitle = list.querySelector('.display-title');
+            const displayDesc = list.querySelector('.display-description');
+            const displayImg = list.querySelector('.display-image');
+            const displaySource = list.querySelector('.display-source');
+            const displayTime = list.querySelector('.display-time');
+            const displayInstitution = list.querySelector('.display-institution');
+            
+            const placeholder = list.querySelector('.interactive-placeholder');
+            const contentArea = list.querySelector('.interactive-content');
+
+            items.forEach(item => {
+                const updateDisplay = (isInitial = false) => {
+                    // Extract data from attributes
+                    const title = item.getAttribute('data-title');
+                    const desc = item.getAttribute('data-description');
+                    const img = item.getAttribute('data-image');
+                    const source = item.getAttribute('data-source');
+                    const time = item.getAttribute('data-time');
+                    const inst = item.getAttribute('data-institution');
+
+                    // Update display elements if they exist
+                    if (displayTitle) displayTitle.textContent = title || '';
+                    if (displayDesc) displayDesc.textContent = desc || '';
+                    if (displayImg) {
+                        if (img) {
+                            displayImg.src = img;
+                            displayImg.closest('.interactive-visual')?.classList.remove('hidden');
+                        } else {
+                            displayImg.closest('.interactive-visual')?.classList.add('hidden');
+                        }
+                    }
+                    if (displaySource) displaySource.textContent = source || '';
+                    if (displayTime) displayTime.textContent = time || '';
+                    if (displayInstitution) displayInstitution.textContent = inst || '';
+
+                    // Toggle placeholder/content
+                    if (placeholder) placeholder.classList.add('hidden');
+                    if (contentArea) {
+                        contentArea.classList.remove('hidden');
+                        if (!isInitial) {
+                            // Re-trigger animation
+                            contentArea.style.animation = 'none';
+                            void contentArea.offsetWidth;
+                            contentArea.style.animation = 'fadeInProject 0.5s ease-out forwards';
+                        }
+                    }
+
+                    // Active state
+                    items.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                };
+
+                item.addEventListener('mouseenter', () => updateDisplay());
+                item.addEventListener('click', () => updateDisplay());
+                
+                // If this item is marked as active in HTML, initialize the display
+                if (item.classList.contains('active')) {
+                    updateDisplay(true);
+                }
+            });
+        });
+    };
+
+    initInteractiveLists();
+
+    // --- 6. Hidden Admin Shortcut (Ctrl + Shift + S) ---
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.shiftKey && e.key === 'S') {
             e.preventDefault();

@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 <div class="timeline-detail-grid">
                     <div class="info-visual">
-                        <img src="${entry.photo}" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid var(--border-color);">
+                        <img src="${entry.photo}" style="width: 100%; height: auto; max-height: 500px; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid var(--border-color);">
                     </div>
                     <div class="info-details">
                         <div class="card" style="margin-top: 0; background: rgba(255,255,255,0.02); padding: 1.5rem;">
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const avgSteps = Math.round(data.stepsTrend.reduce((a, b) => a + b, 0) / data.stepsTrend.length);
 
         pageHero.innerHTML = `
-            <div style="display: flex; gap: 3rem; align-items: center; justify-content: center; flex-wrap: wrap; text-align: left; max-width: 1000px; margin: 0 auto;">
+            <div style="display: flex; gap: 3rem; align-items: center; justify-content: center; flex-wrap: wrap; text-align: left; max-width: 1800px; margin: 0 auto;">
                 <div style="position: relative; display: inline-block;">
                     <img src="${data.photo}" class="user-profile-img" style="width:180px; height:180px; border-width:4px;">
                     ${isAdmin ? '<button id="edit-avatar" style="position: absolute; bottom: 10px; right: 0; padding: 4px 8px; font-size: 10px;" class="btn-primary">Edit</button>' : ''}

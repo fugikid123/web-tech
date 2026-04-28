@@ -47,41 +47,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Projects Interactivity Logic
-    const projectCards = document.querySelectorAll('.project-card-interactive');
-    const infoBox = document.getElementById('project-info-box');
-    
-    if (infoBox) {
-        const infoPlaceholder = infoBox.querySelector('.info-placeholder');
-        const infoContent = infoBox.querySelector('.info-content');
-        
-        const infoTitle = document.getElementById('info-title');
-        const infoDescription = document.getElementById('info-description');
-        const infoTime = document.getElementById('info-time');
-        const infoInstitution = document.getElementById('info-institution');
-
-        projectCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                // Extract data from attributes
-                const title = card.getAttribute('data-title');
-                const description = card.getAttribute('data-description');
-                const time = card.getAttribute('data-time');
-                const institution = card.getAttribute('data-institution');
-
-                // Update info box content
-                infoTitle.textContent = title;
-                infoDescription.textContent = description;
-                infoTime.textContent = time;
-                infoInstitution.textContent = institution;
-
-                // Toggle visibility
-                infoPlaceholder.classList.add('hidden');
-                infoContent.classList.remove('hidden');
-
-                // Active state styling
-                projectCards.forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-            });
-        });
-    }
 });

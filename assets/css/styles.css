@@ -126,7 +126,7 @@ nav {
 
 /* --- Layout Containers --- */
 main {
-  max-width: 1100px;
+  max-width: 1800px;
   margin: 2rem auto;
   padding: 0 2rem;
   flex: 1;
@@ -236,23 +236,23 @@ button {
   transition: opacity 0.2s;
 }
 
-/* --- Split Projects Section --- */
-.projects-container-split {
+/* --- Special Interactive List (Unified) --- */
+.special-interactive-list {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: minmax(300px, 350px) 1fr;
   gap: 2.5rem;
   align-items: start;
   margin-top: 2rem;
   min-height: 450px;
 }
 
-.projects-list {
+.interactive-sidebar {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.project-card-interactive {
+.interactive-item {
   background: var(--card-dark);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -263,14 +263,18 @@ button {
   overflow: hidden;
 }
 
-.project-card-interactive:hover,
-.project-card-interactive.active {
+.interactive-item:hover,
+.interactive-item.active {
   border-color: var(--accent-red);
-  background: rgba(225, 29, 72, 0.03);
+  background: rgba(225, 29, 72, 0.04);
   transform: translateX(8px);
 }
 
-.project-card-interactive .project-short {
+.interactive-item.active {
+  background: rgba(225, 29, 72, 0.08);
+}
+
+.interactive-item .item-title {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
@@ -278,13 +282,13 @@ button {
   transition: color 0.3s ease;
 }
 
-.project-card-interactive:hover .project-short,
-.project-card-interactive.active .project-short {
+.interactive-item.active .item-title,
+.interactive-item:hover .item-title {
   color: var(--accent-red);
 }
 
-/* Smaller items (links) shown on hover */
-.project-links {
+/* For Project cards which have links */
+.item-links {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -295,33 +299,15 @@ button {
   gap: 0.5rem;
 }
 
-.project-card-interactive:hover .project-links,
-.project-card-interactive.active .project-links {
+.interactive-item:hover .item-links,
+.interactive-item.active .item-links {
   max-height: 200px;
   opacity: 1;
   margin-top: 1rem;
 }
 
-.task-link {
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  text-decoration: none;
-  padding: 0.4rem 0.75rem;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.03);
-  transition: all 0.2s ease;
-  border-left: 2px solid transparent;
-}
-
-.task-link:hover {
-  background: rgba(225, 29, 72, 0.1);
-  color: var(--text-main);
-  border-left-color: var(--accent-red);
-  padding-left: 1rem;
-}
-
-/* Info Box Styling */
-.project-info-box {
+/* Display Card */
+.interactive-display-card {
   background: var(--card-dark);
   border: 1px solid var(--border-color);
   border-radius: 16px;
@@ -335,83 +321,116 @@ button {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.info-placeholder {
+.interactive-placeholder {
   text-align: center;
   color: var(--text-dim);
   font-style: italic;
   padding: 2rem;
 }
 
-.info-content {
-  animation: fadeIn 0.4s ease-out;
+.interactive-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeInProject 0.5s ease-out forwards;
 }
 
-.info-content.hidden {
-  display: none !important;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.info-content h3 {
+.interactive-info h3 {
   margin-top: 0;
   font-size: 1.75rem;
   color: var(--accent-red);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
-.info-image-placeholder {
-  width: 100%;
-  height: 200px;
-  background: #111;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  border: 1px dashed #333;
-  color: #444;
-  font-size: 0.9rem;
-}
-
-.info-details p {
-  color: var(--text-dim);
-  font-size: 1rem;
+.interactive-info p {
+  color: var(--text-main);
+  font-size: 1.05rem;
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin: 0;
 }
 
-.info-meta {
+.interactive-visual {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.interactive-visual img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.interactive-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-color);
+  margin-top: 1.5rem;
 }
 
-.info-meta p {
+.interactive-meta p {
   margin: 0;
   font-size: 0.85rem;
+  color: var(--text-dim);
 }
 
-.info-meta strong {
+.interactive-meta strong {
   display: block;
   color: var(--text-main);
   margin-bottom: 0.25rem;
 }
 
+@keyframes fadeInProject {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 900px) {
-  .projects-container-split {
+  .special-interactive-list {
     grid-template-columns: 1fr;
-  }
-  
-  .project-info-box {
-    position: static;
     min-height: auto;
   }
+  
+  .interactive-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    white-space: nowrap;
+    gap: 0.75rem;
+  }
+
+  .interactive-item {
+    flex: 0 0 auto;
+    padding: 1rem 1.5rem;
+    transform: none !important;
+  }
+
+  .interactive-display-card {
+    position: static;
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  
+  .interactive-content {
+    gap: 1.5rem;
+  }
+  
+  .interactive-visual img {
+    max-height: 250px;
+  }
 }
+
+/* --- Older redundant styles (can be removed or kept as fallback) --- */
+/* We'll remove the specific ones to clean up */
+
 
 .projects-grid {
   display: grid;
@@ -682,150 +701,6 @@ button {
   content: '— ';
 }
 
-/* --- Split Interactive Layouts (Posture & Mobility) --- */
-.posture-container-split, .mobility-container-split {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 2rem;
-    align-items: start;
-}
-
-.posture-sidebar, .mobility-sidebar {
-    background: transparent; /* Remove container background for individual item look */
-    border: none;
-    overflow: visible;
-}
-
-.posture-nav-list, .mobility-nav-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem; /* Space between items */
-}
-
-.posture-nav-item, .mobility-nav-item {
-    background: var(--card-dark);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: var(--text-dim);
-    font-weight: 500;
-    position: relative;
-    border-bottom: 1px solid var(--border-color); /* Maintain border */
-}
-
-.posture-nav-item::before, .mobility-nav-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 0;
-    background: var(--accent-red);
-    transition: height 0.3s ease;
-    border-radius: 0 4px 4px 0;
-}
-
-.posture-nav-item:hover, .posture-nav-item.active,
-.mobility-nav-item:hover, .mobility-nav-item.active {
-    background: rgba(225, 29, 72, 0.04);
-    color: var(--text-main);
-    border-color: var(--accent-red);
-    padding-left: 2rem;
-    transform: translateX(5px);
-}
-
-.posture-nav-item.active, .mobility-nav-item.active {
-    color: var(--accent-red);
-    font-weight: 700;
-    background: rgba(225, 29, 72, 0.08);
-}
-
-.posture-nav-item.active::before, .mobility-nav-item.active::before {
-    height: 60%;
-}
-
-.posture-display-card, .mobility-display-card {
-    background: var(--card-dark);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2.5rem;
-    min-height: 350px;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.posture-detail-content, .mobility-detail-content {
-    display: flex;
-    gap: 3rem;
-    width: 100%;
-    align-items: center;
-    animation: fadeIn 0.4s ease-out;
-}
-
-.posture-info, .mobility-info {
-    flex: 1;
-}
-
-.posture-info h3, .mobility-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.25rem;
-    color: var(--accent-red);
-}
-
-.posture-info p, .mobility-info p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-main);
-}
-
-.posture-visual, .mobility-visual {
-    flex: 0 0 300px;
-    text-align: center;
-}
-
-.posture-visual img, .mobility-visual img {
-    width: 100%;
-    height: auto;
-    max-height: 250px;
-    object-fit: contain;
-    border-radius: 12px;
-    background: #fff;
-    padding: 1rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-@media (max-width: 900px) {
-    .posture-container-split, .mobility-container-split {
-        grid-template-columns: 1fr;
-    }
-    
-    .posture-nav-list, .mobility-nav-list {
-        display: flex;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-    
-    .posture-nav-item, .mobility-nav-item {
-        border-bottom: none;
-        border-right: 1px solid var(--border-color);
-        padding: 1rem 1.5rem;
-    }
-    
-    .posture-detail-content, .mobility-detail-content {
-        flex-direction: column-reverse;
-        gap: 2rem;
-    }
-    
-    .posture-visual, .mobility-visual {
-        flex: none;
-        width: 100%;
-    }
-}
-
 /* --- Story & List Styles --- */
 .story-card p {
     margin-bottom: 1.25rem;
@@ -1063,7 +938,7 @@ footer {
 /* --- Progress Timeline (Improved View) --- */
 .timeline-split-container {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: minmax(200px, 250px) 1fr;
     gap: 2rem;
     align-items: start;
     margin-top: 1rem;
@@ -1157,6 +1032,11 @@ footer {
     gap: 2rem;
 }
 
+.info-visual img {
+    object-fit: contain;
+    max-width: 100%;
+}
+
 /* Mobile Adjustments for Timeline */
 @media (max-width: 900px) {
     .timeline-split-container {
@@ -1172,6 +1052,10 @@ footer {
 
     .info-visual img {
         max-height: 300px !important;
+        width: auto;
+        object-fit: contain;
+        margin: 0 auto;
+        display: block;
     }
 
     .timeline-detail-display h3 {
@@ -1180,23 +1064,26 @@ footer {
     
     .timeline-visual-nav {
         min-height: auto;
-        padding: 1rem 0;
+        padding: 0;
         overflow-x: auto;
-        border-bottom: 1px solid var(--border-color);
-        margin-bottom: 1.5rem;
+        border-bottom: none;
+        margin-bottom: 0.5rem;
     }
 
     .timeline-vertical-points {
         flex-direction: row;
         width: max-content;
-        gap: 1.5rem;
-        padding: 0.5rem;
+        gap: 0.75rem;
+        padding: 0;
     }
 
-    .timeline-point {
+    .timeline-point, .timeline-point.active, .timeline-point:hover {
         flex-direction: column;
-        padding: 1rem;
-        min-width: 120px;
+        padding: 0.6rem 0.8rem;
+        min-width: 90px;
+        background: transparent;
+        border: none;
+        transform: none;
     }
 
     .timeline-point.active {
@@ -1204,12 +1091,15 @@ footer {
     }
 
     .timeline-circle {
+        width: 14px;
+        height: 14px;
+        border-width: 2px;
         margin-right: 0;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
     }
 
     .timeline-date {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -1337,118 +1227,6 @@ footer {
 
 .close-modal:hover { color: var(--accent-red); }
 
-/* --- Posture & Mobility Nav Items --- */
-.posture-nav-item, .mobility-nav-item {
-    background: var(--card-dark);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.25rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: var(--text-main);
-    font-weight: 500;
-}
-
-.posture-nav-item:hover, .posture-nav-item.active,
-.mobility-nav-item:hover, .mobility-nav-item.active {
-    border-color: var(--accent-red);
-    background: rgba(225, 29, 72, 0.04);
-    transform: translateX(8px);
-    color: var(--accent-red);
-}
-
-.posture-detail-content, .mobility-detail-content {
-    display: flex;
-    flex-direction: column; /* Text on top, photo below */
-    gap: 2rem;
-    width: 100%;
-    animation: fadeInProject 0.5s ease-out forwards;
-}
-
-.posture-visual img, .mobility-visual img {
-    width: 100%;
-    height: 450px; /* Fixed height for consistency */
-    object-fit: contain; /* Maintain aspect ratio within the fixed height */
-    border-radius: 12px;
-    background: #fff;
-    padding: 1rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-@media (min-width: 1024px) {
-    /* Keep column layout for these as requested */
-    .posture-detail-content, .mobility-detail-content {
-        flex-direction: column;
-    }
-}
-
-
-/* Standardized Information Box */
-#info-box {
-    background: var(--card-dark);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2.5rem;
-    min-height: 500px; /* Consistent height */
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; /* Ensure content fills width */
-    justify-content: flex-start; /* Anchor content to the top */
-    transition: border-color 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.info-visual {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.info-visual img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    object-fit: contain;
-}
-
-.posture-info, .mobility-info {
-    text-align: left;
-    width: 100%;
-    margin: 0; /* Remove potential shifting margins */
-}
-
-.posture-info h3, .mobility-info h3 {
-    font-size: 1.75rem;
-    margin: 0 0 1.25rem 0; /* Top: 0, Bottom: 1.25rem */
-    color: var(--accent-red);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-}
-
-.posture-info p, .mobility-info p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--text-main);
-    margin: 0;
-}
-
-.posture-visual, .mobility-visual {
-    width: 100%;
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.img-source, #mob-display-source {
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    font-style: italic;
-    opacity: 0.8;
-}
 
 #info-box:hover {
     border-color: rgba(225, 29, 72, 0.3);

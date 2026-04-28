@@ -61,87 +61,84 @@
 
     <section id="projects">
       <h2>Projects</h2>
-      <div class="projects-container-split">
-        <div class="projects-list">
+      <div class="special-interactive-list">
+        <div class="interactive-sidebar">
           <!-- Web Tech Card -->
-          <article class="project-card-interactive" 
+          <article class="interactive-item" 
                    data-title="Web Technologies Lab Work"
                    data-description="A collection of laboratory tasks focusing on ES6+, DOM APIs, and responsive design. This project showcases modern web development practices."
                    data-time="Autumn 2026"
                    data-institution="University of Technology">
-            <h3 class="project-short">Web Technologies</h3>
-            <div class="project-links">
+            <h3 class="item-title">Web Technologies</h3>
+            <div class="item-links">
               <a href="pages/hypertrophy/hypertrophy.html" class="task-link">Task 1: Hypertrophy</a>
               <a href="pages/tasks/tasks.html" class="task-link">Practical Tasks</a>
             </div>
           </article>
 
           <!-- BookStock Card -->
-          <article class="project-card-interactive" 
+          <article class="interactive-item" 
                    data-title="BookStock Inventory System"
                    data-description="A Java-based inventory management application for tracking book supplies and stock levels. Features a robust backend and intuitive UI."
                    data-time="Spring 2026"
                    data-institution="Software Engineering Dept">
-            <h3 class="project-short">BookStock</h3>
-            <div class="project-links">
+            <h3 class="item-title">BookStock</h3>
+            <div class="item-links">
               <a href="#" class="task-link">View Project</a>
               <a href="#" class="task-link">Documentation</a>
             </div>
           </article>
 
           <!-- Student Database Card -->
-          <article class="project-card-interactive" 
+          <article class="interactive-item" 
                    data-title="University Student Housing Database"
                    data-description="A comprehensive relational database designed for managing university housing and student records. Optimized for performance and data integrity."
                    data-time="Winter 2025"
                    data-institution="Database Systems Lab">
-            <h3 class="project-short">Student Database</h3>
-            <div class="project-links">
+            <h3 class="item-title">Student Database</h3>
+            <div class="item-links">
               <a href="#" class="task-link">View Schema</a>
               <a href="#" class="task-link">ER Diagram</a>
             </div>
           </article>
 
           <!-- UI-UX Card -->
-          <article class="project-card-interactive" 
+          <article class="interactive-item" 
                    data-title="User Interface & Experience Design Prototypes"
                    data-description="Prototype designs focused on user-centric interfaces, accessibility, and seamless navigation across multiple devices."
                    data-time="Ongoing"
                    data-institution="Design Studio">
-            <h3 class="project-short">UI-UX Design</h3>
-            <div class="project-links">
+            <h3 class="item-title">UI-UX Design</h3>
+            <div class="item-links">
               <a href="3C - NerdyBro!/index.html" class="task-link">View Prototype</a>
             </div>
           </article>
 
           <!-- Social Data Card -->
-          <article class="project-card-interactive" 
+          <article class="interactive-item" 
                    data-title="Social Media Data Analysis System"
                    data-description="A system built to analyze and visualize data patterns from social platforms using Python. Includes sentiment analysis and trend tracking."
                    data-time="Autumn 2025"
                    data-institution="Data Science Institute">
-            <h3 class="project-short">Social Data</h3>
-            <div class="project-links">
+            <h3 class="item-title">Social Data</h3>
+            <div class="item-links">
               <a href="#" class="task-link">View Analysis</a>
             </div>
           </article>
         </div>
 
-        <div class="project-info-box" id="project-info-box">
-          <div class="info-placeholder">
+        <div class="interactive-display-card">
+          <div class="interactive-placeholder">
             <p>Hover over a project to see more details.</p>
           </div>
-          <div class="info-content hidden">
-            <h3 id="info-title"></h3>
-            <div class="info-image-placeholder">
-              <span>Project Preview (Coming Soon)</span>
+          <div class="interactive-content hidden">
+            <div class="interactive-info">
+              <h3 class="display-title"></h3>
+              <p class="display-description"></p>
             </div>
-            <div class="info-details">
-              <p id="info-description"></p>
-              <div class="info-meta">
-                <p><strong>Time:</strong> <span id="info-time"></span></p>
-                <p><strong>Institution:</strong> <span id="info-institution"></span></p>
-              </div>
+            <div class="interactive-meta">
+              <p><strong>Timeline:</strong> <span class="display-time"></span></p>
+              <p><strong>Institution:</strong> <span class="display-institution"></span></p>
             </div>
           </div>
         </div>
