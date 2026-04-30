@@ -21,6 +21,8 @@ A modern, responsive personal portfolio and fitness education platform featuring
 
 ## 🛠️ Tech Stack
 *   **Frontend:** HTML5, CSS3 (Custom Variables, Flexbox/Grid), ES6+ JavaScript.
+*   **Backend:** Node.js, Express.js.
+*   **Database:** MongoDB with Mongoose ODM.
 *   **Interactivity:** Vanilla JS (no heavy frameworks) for fast performance.
 *   **API Integration:** RESTful API fetching for real-time exercise data.
 *   **Version Control:** Managed via Git/GitHub.
@@ -35,6 +37,8 @@ A modern, responsive personal portfolio and fitness education platform featuring
 ├── pages/
 │   ├── hypertrophy/  # Course pages and interactive scripts
 │   └── dashboard/    # Member-only dashboard interface
+├── server.js         # MongoDB/Express backend server
+├── package.json      # Node.js dependencies and scripts
 └── index.html        # Main Portfolio Landing Page
 ```
 
@@ -43,8 +47,23 @@ A modern, responsive personal portfolio and fitness education platform featuring
    ```bash
    git clone https://github.com/fugikid123/web-tech.git
    ```
-2. Open `index.html` in any modern web browser.
-3. Use credentials `user1 / 12345` to explore the dashboard.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Ensure **MongoDB** is running locally on port `27017`.
+4. Start the backend server:
+   ```bash
+   npm start
+   ```
+5. Open `index.html` in any modern web browser.
+6. Use credentials `user1 / 12345` to explore the dashboard.
+
+## 🛡️ CRUD Operations (MongoDB)
+The hypertrophy page now integrates with a real MongoDB database for user signups:
+- **CREATE:** User submits the training guide form, saving data to the `signups` collection.
+- **READ:** Signups can be retrieved via the `/api/signups` endpoint.
+- **DELETE:** (Optional) Signups can be removed via `/api/signup/:id`.
 
 ---
 *Created by Minh Tran — MICT Student at Western Sydney University.*

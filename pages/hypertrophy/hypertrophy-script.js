@@ -186,24 +186,52 @@ document.addEventListener('DOMContentLoaded', () => {
             input.addEventListener('blur', () => validateField(input));
         });
 
-        signupForm.addEventListener('submit', (e) => {
+        signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             if (!signupForm.checkValidity()) {
                 return;
             }
 
-            const userName = signupForm.name.value;
-                
-            signupForm.parentElement.innerHTML = `
-                <div class="success-message" style="text-align: center; padding: 2rem;">
-                    <h3 style="color: #10b981;">✓ Signup Recorded!</h3>
-                    <p>Thank you, ${userName} for signing up. Your request has been recorded. I will contact you soon!</p>
-                    <div style="margin-top: 1.5rem;">
-                        <button onclick="location.reload()" class="btn-primary">Back</button>
-                    </div>
-                </div>
-            `;
+            // Collect form data
+            const formData = {
+                name: signupForm.name.value,
+                age: signupForm.age.value ? parseInt(signupForm.age.value) : null,
+                email: signupForm.email.value,
+                level: signupForm.level.value,
+                days: Array.from(signupForm.querySelectorAll('input[name="days"]:checked')).map(cb => cb.value)
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    const userName = result.data.name;
+                        
+                    signupForm.parentElement.innerHTML = `
+                        <div class="success-message" style="text-align: center; padding: 2rem;">
+                            <h3 style="color: #10b981;">✓ Signup Recorded in MongoDB!</h3>
+                            <p>Thank you, ${userName} for signing up. Your request has been saved to our real database.</p>
+                            <div style="margin-top: 1.5rem;">
+                                <button onclick="location.reload()" class="btn-primary">Back</button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    const errData = await response.json();
+                    alert("Error saving signup: " + (errData.error || "Unknown error"));
+                }
+            } catch (error) {
+                console.error("Error connecting to backend:", error);
+                alert("Could not connect to the backend server. Make sure it's running (node server.js)");
+            }
         });
     }
 });

@@ -1,0 +1,27 @@
+{
+  "name": "lab1-work",
+  "version": "1.0.0",
+  "description": "A modern, responsive personal portfolio and fitness education platform featuring a synchronized **Dark & Red** aesthetic. This project showcases web development skills through interactive UI components, API integrations, and user-centric design.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fugikid123/web-tech-week-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/fugikid123/web-tech-week-1/issues"
+  },
+  "homepage": "https://github.com/fugikid123/web-tech-week-1#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.1"
+  }
+}

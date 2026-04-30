@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         timeline: [
             { date: "15/4/2026", weight: 78.5, calories: 2300, steps: 7200, protein: 185, carb: 210, fat: 75, photo: "../../assets/images/DT.jpg", aim: "Fatloss" },
-            { date: "15/7/2026", weight: 70.0, calories: 2100, steps: 10000, protein: 180, carb: 220, fat: 65, photo: "../../assets/images/DT2.jpg", aim: "muscle build" }
+            { date: "15/7/2026", weight: 70.0, calories: 2100, steps: 10000, protein: 180, carb: 220, fat: 65, photo: "../../assets/images/DT2.jpg", aim: "Muscle build" }
         ],
         weightTrend: [78.5, 78.2, 78.4, 78.1, 78.0, 77.9, 78.0],
         stepsTrend: [7200, 8100, 6500, 9200, 4100, 5200, 7800]

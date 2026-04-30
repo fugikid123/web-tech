@@ -10,16 +10,16 @@
   --nav-bg: rgba(10, 10, 10, 0.8);
 }
 
-/* Base Reset & Typography */
 body {
-  margin: 0;
+  margin: auto;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: var(--bg-dark);
   color: var(--text-main);
   line-height: 1.6;
-  display: flex;
+  display: grid;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* --- Navigation --- */
@@ -127,7 +127,7 @@ nav {
 /* --- Layout Containers --- */
 main {
   max-width: 1800px;
-  margin: 2rem auto;
+  margin: 0 2rem auto;
   padding: 0 2rem;
   flex: 1;
 }
@@ -750,7 +750,7 @@ button {
 /* --- Transformation Album Gallery (Interactive Side-bar) --- */
 .comparison-grid {
     display: flex;
-    gap: 1rem;
+    gap: none;
     margin-top: 2rem;
     min-height: 550px;
     align-items: stretch;
@@ -763,20 +763,20 @@ button {
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     cursor: pointer;
-    background: var(--card-dark);
-    border: 1px solid var(--border-color);
+    background: var(--bg-dark);
+    border: 0px solid var(--border-color);
     position: relative;
 }
 
 .comparison-card.active {
     flex: 9;
     border-color: var(--accent-red);
-    background: rgba(225, 29, 72, 0.02);
+    background: var(--bg-dark);
 }
 
 .comparison-card:not(.active) {
     flex: 0 0 60px;
-    background: #111;
+    background: var(--bd-dark);
     padding: 0;
     justify-content: center;
     align-items: center;
@@ -846,6 +846,7 @@ button {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    background: var(--bg-dark);
 }
 
 .album-caption {
@@ -1027,18 +1028,27 @@ footer {
 }
 
 .timeline-detail-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
     gap: 2rem;
+    align-items: start;
 }
 
 .info-visual img {
     object-fit: contain;
-    max-width: 100%;
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+    border-radius: 12px;
 }
 
 /* Mobile Adjustments for Timeline */
 @media (max-width: 900px) {
+    .timeline-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
     .timeline-split-container {
         grid-template-columns: 1fr;
     }
@@ -1056,6 +1066,7 @@ footer {
         object-fit: contain;
         margin: 0 auto;
         display: block;
+        background: #ffffff;
     }
 
     .timeline-detail-display h3 {
